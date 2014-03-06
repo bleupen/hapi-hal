@@ -1,31 +1,33 @@
 {
-    "name": "hapi-hal",
-    "version": "0.0.0",
-    "description": "A HAL Representation Plugin for Hapi",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/bleupen/hapi-hal"
-    },
-    "keywords": [
-        "HAL",
-        "Hapi",
-        "hypermedia",
-        "HATEOAS"
-    ],
-    "author": "Brad Leupen",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/bleupen/hapi-hal/issues"
-    },
-    "homepage": "https://github.com/bleupen/hapi-hal",
-    "dependencies": {
-        "hoek": "^1.5.0"
-    },
-    "peerDependencies": {
-        "hapi": "2.x.x"
-    }
+  "name": "hapi-hal",
+  "version": "0.0.0",
+  "description": "A HAL Representation Plugin for Hapi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bleupen/hapi-hal"
+  },
+  "keywords": [
+    "HAL",
+    "Hapi",
+    "hypermedia",
+    "HATEOAS"
+  ],
+  "author": "Brad Leupen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bleupen/hapi-hal/issues"
+  },
+  "homepage": "https://github.com/bleupen/hapi-hal",
+  "dependencies": {
+    "hoek": "^1.5.0",
+    "hal": "^0.1.0",
+    "url-template": "^2.0.4"
+  },
+  "peerDependencies": {
+    "hapi": "2.x.x"
+  }
 }
