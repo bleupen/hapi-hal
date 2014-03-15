@@ -25,6 +25,16 @@ describe('Hapi Hal plugin', function () {
         }
     };
 
+    var errorConfig = {
+        handler: function(req, reply) { reply('Bad Request').code(400)},
+        app: {
+            hal: {
+                query: '{?q}',
+                apiRel: usersRel
+            }
+        }
+    };
+
     var meConfig = {
         handler: function(req, reply) { reply('me')},
         app: {
@@ -130,6 +140,24 @@ describe('Hapi Hal plugin', function () {
                 res.statusCode.should.equal(200);
                 res.result.items.should.equal(users);
                 res.result._links.self.href.should.equal('/users');
+                done();
+            });
+        });
+    });
+
+    it('should not treat unsuccessful responses', function (done) {
+        errorConfig.app.hal.representation = function(users, url, rb, next) {
+            var entity = { items: users };
+            next(null, rb.create(entity, url));
+        };
+        var server = new hapi.Server();
+        server.route({ path: '/users', method: 'GET', config: errorConfig});
+        server.pack.require('../../', {relsUrl: '/myrels', namespaces: [ ns ]}, function(err) {
+            should.not.exist(err);
+
+            server.inject({ method: 'GET', url: '/users'}, function (res) {
+                res.statusCode.should.equal(400);
+                res.result.should.equal('Bad Request');
                 done();
             });
         });
