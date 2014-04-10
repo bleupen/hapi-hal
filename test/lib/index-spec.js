@@ -165,7 +165,7 @@ describe('Hapi Hal plugin', function () {
 
     it('should return status 500 if an error occurs building the representation', function (done) {
         usersConfig.app.hal.representation = function(users, url, rb, next) {
-            next('Cannot build representation');
+            next('Cannot build represe`ntation');
         };
         var server = new hapi.Server();
         server.route({ path: '/users', method: 'GET', config: usersConfig});
